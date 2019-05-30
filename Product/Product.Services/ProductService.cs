@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Product.Models;
 using Product.Repositories;
 
@@ -37,6 +38,7 @@ namespace Product.Services
                     Success = false,
                     Error = "Product already exists"
                 };
+            product.Id = Guid.NewGuid().ToString();
             _productRepository.Create(product);
             return new Result<Models.Product>
             {
