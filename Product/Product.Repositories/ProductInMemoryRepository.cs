@@ -12,9 +12,21 @@ namespace Product.Repositories
             _products = new List<Models.Product>();
         }
 
-        public List<Models.Product> Get(int page = 1, int pageSize = 10)
+        public ProductInMemoryRepository(List<Models.Product> products)
         {
-            return _products.Skip(page - 1 * pageSize).Take(pageSize).ToList();
+            _products = products;
+        }
+
+        public List<Models.Product> Get(int page = 1, int pageSize = 10, string searchText = "")
+        {
+            if (string.IsNullOrEmpty(searchText))
+                return _products.Skip(page - 1 * pageSize).Take(pageSize).ToList();
+            searchText = searchText.ToLower();
+            return _products
+                .Where(p => p.Brand.ToLower().Contains(searchText)
+                            || p.Description.ToLower().Contains(searchText)
+                            || p.Model.ToLower().Contains(searchText))
+                .Skip(page - 1 * pageSize).Take(pageSize).ToList();
         }
 
         public Models.Product Get(string id)

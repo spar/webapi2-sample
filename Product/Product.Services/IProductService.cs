@@ -5,7 +5,7 @@ namespace Product.Services
 {
     public interface IProductService
     {
-        PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10);
+        PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10, string searchText = "");
 
         Models.Product Get(string id);
 

@@ -40,10 +40,10 @@ namespace Product.UnitTests
         {
             var repoMock = new Mock<IProductRepository>();
             var products = InitProducts();
-            repoMock.Setup(x => x.Get(1, 5)).Returns(products);
+            repoMock.Setup(x => x.Get(1, 5, "")).Returns(products);
 
             var service = new ProductService(repoMock.Object);
-            var returned = service.Get(1, 5);
+            var returned = service.Get(1, 5, "");
 
             Assert.Equal(1, returned.CurrentPage);
             Assert.Equal(5, returned.PageSize);

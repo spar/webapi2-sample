@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Products SPA</title>
     <base href="/">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,23 +16,27 @@
     </div>
 
     <div class="content">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Auth0 - JavaScript</a>
-
-                    <button id="btn-home-view" class="btn btn-primary btn-margin">
-                        Home
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-
-                    <button id="qsLoginBtn" class="btn btn-primary btn-margin">
-                        Log In
-                    </button>
-
-                    <button id="qsLogoutBtn" class="btn btn-primary btn-margin">
-                        Log Out
-                    </button>
+                    <a class="navbar-brand" href="#">Products</a>
                 </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a id="btn-home-view" href="#">Home</a></li>
+                        <li><a id="qsLoginBtn" href="#">Log In</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="qsLogoutBtn" href="#">Log Out</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
             </div>
         </nav>
 
@@ -41,11 +45,31 @@
             <div id="home-view">
                 <h4></h4>
             </div>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <div class="input-group-addon">Search Products</div>
+                        <input type="text" class="form-control" id="txtSearch">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary" id="btnSearch">Search</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="products">
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
     <script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
-    <script src="auth0-variables.js"></script>
+    <script src="variables.js"></script>
+    <script src="appAuth.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

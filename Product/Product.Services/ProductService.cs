@@ -14,13 +14,13 @@ namespace Product.Services
             _productRepository = productRepository;
         }
 
-        public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10)
+        public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10, string searchText = "")
         {
             return new PaginatedResult<List<Models.Product>>
             {
                 CurrentPage = page,
                 PageSize = pageSize,
-                Data = _productRepository.Get(page, pageSize),
+                Data = _productRepository.Get(page, pageSize, searchText),
                 Success = true
             };
         }

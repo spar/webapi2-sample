@@ -21,9 +21,9 @@ namespace Product.Api.Controllers
 
         // GET api/products
         [ScopeAuthorize("read:products")]
-        public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10)
+        public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10, string searchText = "")
         {
-            return _productService.Get(page, pageSize);
+            return _productService.Get(page, pageSize, searchText);
         }
 
         // GET api/products/id1

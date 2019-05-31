@@ -4,7 +4,7 @@ namespace Product.Repositories
 {
     public interface IProductRepository
     {
-        List<Models.Product> Get(int page = 1, int pageSize = 10);
+        List<Models.Product> Get(int page = 1, int pageSize = 10, string searchText = "");
 
         Models.Product Get(string id);
 

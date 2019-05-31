@@ -1,10 +1,13 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Reflection;
 using System.Web.Http;
 using Auth0.Owin;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Jwt;
 using Newtonsoft.Json.Serialization;
@@ -29,11 +32,14 @@ namespace Product.Api
             );
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            app.UseCors(CorsOptions.AllowAll);
             ConfigureAuth0(app);
 
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<ProductInMemoryRepository>().As<IProductRepository>().SingleInstance();
+            builder.Register(p => new ProductInMemoryRepository(GetDemoModels())).As<IProductRepository>().SingleInstance();
+
             builder.RegisterType<ProductService>().As<IProductService>();
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
@@ -58,6 +64,17 @@ namespace Product.Api
                         IssuerSigningKeyResolver = (token, securityToken, kid, parameters) => keyResolver.GetSigningKey(kid)
                     }
                 });
+        }
+
+        private static List<Models.Product> GetDemoModels()
+        {
+            return new List<Models.Product>
+            {
+                new Models.Product(Guid.NewGuid().ToString(), "Microsoft's Surface Pro 6", "Surface Pro 6", "Microsoft Surface"),
+                new Models.Product(Guid.NewGuid().ToString(), "Microsoft's Surface Pro 4", "Surface Pro 4", "Microsoft Surface"),
+                new Models.Product(Guid.NewGuid().ToString(), "Microsoft's Surface Book 2", "Surface Book 2", "Microsoft Surface"),
+                new Models.Product(Guid.NewGuid().ToString(), "Microsoft's Surface Studio", "Surface Studio", "Microsoft Surface")
+            };
         }
     }
 }
