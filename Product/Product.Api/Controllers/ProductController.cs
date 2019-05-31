@@ -2,6 +2,7 @@
 using Product.Services;
 using System.Collections.Generic;
 using System.Web.Http;
+using Product.Api.Attributes;
 
 namespace Product.Api.Controllers
 {
@@ -19,24 +20,28 @@ namespace Product.Api.Controllers
         }
 
         // GET api/products
+        [ScopeAuthorize("read:products")]
         public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10)
         {
             return _productService.Get(page, pageSize);
         }
 
         // GET api/products/id1
+        [ScopeAuthorize("read:products")]
         public Models.Product Get(string id)
         {
             return _productService.Get(id);
         }
 
         // POST api/products
+        [ScopeAuthorize("create:products")]
         public Result<Models.Product> Post([FromBody]Models.Product product)
         {
             return _productService.Create(product);
         }
 
         // PUT api/products/id1
+        [ScopeAuthorize("update:products")]
         public Result<Models.Product> Put(string id, [FromBody]Models.Product product)
         {
             product.Id = id;
@@ -44,6 +49,7 @@ namespace Product.Api.Controllers
         }
 
         // DELETE api/products/id1
+        [ScopeAuthorize("delete:products")]
         public Result<Models.Product> Delete(string id)
         {
             return _productService.Delete(id);

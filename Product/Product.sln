@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Api", "Product.Api\Product.Api.csproj", "{87DE91AE-6805-43B6-94EB-793AB370FB9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.UnitTests", "Product.UnitTests\Product.UnitTests.csproj", "{02E5CE0C-5A8D-4CAF-A4F6-98FAD79B2876}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.UnitTests", "Product.UnitTests\Product.UnitTests.csproj", "{02E5CE0C-5A8D-4CAF-A4F6-98FAD79B2876}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Repositories", "Product.Repositories\Product.Repositories.csproj", "{FA8D1278-C892-415E-AAAB-C82E2C7215A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Services", "Product.Services\Product.Services.csproj", "{DF0537E4-E17C-469D-BE0A-74AC463DB028}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Models", "Product.Models\Product.Models.csproj", "{FEDDBEED-2EE3-44CE-BF13-89C0F4AD7D37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Ui", "Product.Ui\Product.Ui.csproj", "{C118C6DD-E999-4E1F-BF72-E20226179BC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{FEDDBEED-2EE3-44CE-BF13-89C0F4AD7D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEDDBEED-2EE3-44CE-BF13-89C0F4AD7D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEDDBEED-2EE3-44CE-BF13-89C0F4AD7D37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C118C6DD-E999-4E1F-BF72-E20226179BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C118C6DD-E999-4E1F-BF72-E20226179BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C118C6DD-E999-4E1F-BF72-E20226179BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C118C6DD-E999-4E1F-BF72-E20226179BC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
