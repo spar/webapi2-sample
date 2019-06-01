@@ -17,6 +17,8 @@ namespace Product.Api.Attributes
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
+            if (!bool.Parse(ConfigurationManager.AppSettings["AuthenticationEnabled"]))
+                return;
             base.OnAuthorization(actionContext);
 
             // Get the Auth0 domain, in order to validate the issuer

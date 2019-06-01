@@ -34,7 +34,8 @@ namespace Product.Api
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             app.UseCors(CorsOptions.AllowAll);
-            ConfigureAuth0(app);
+            if (bool.Parse(ConfigurationManager.AppSettings["AuthenticationEnabled"]))
+                ConfigureAuth0(app);
 
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());

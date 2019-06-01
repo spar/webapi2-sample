@@ -20,6 +20,7 @@ namespace Product.Api.Controllers
         }
 
         // GET api/products
+        [HttpGet]
         [ScopeAuthorize("read:products")]
         public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10, string searchText = "")
         {
@@ -27,6 +28,7 @@ namespace Product.Api.Controllers
         }
 
         // GET api/products/id1
+        [HttpGet]
         [ScopeAuthorize("read:products")]
         public Models.Product Get(string id)
         {
@@ -34,6 +36,7 @@ namespace Product.Api.Controllers
         }
 
         // POST api/products
+        [HttpPost]
         [ScopeAuthorize("create:products")]
         public Result<Models.Product> Post([FromBody]Models.Product product)
         {
@@ -41,6 +44,7 @@ namespace Product.Api.Controllers
         }
 
         // PUT api/products/id1
+        [HttpPut]
         [ScopeAuthorize("update:products")]
         public Result<Models.Product> Put(string id, [FromBody]Models.Product product)
         {
@@ -49,6 +53,7 @@ namespace Product.Api.Controllers
         }
 
         // DELETE api/products/id1
+        [HttpDelete]
         [ScopeAuthorize("delete:products")]
         public Result<Models.Product> Delete(string id)
         {
