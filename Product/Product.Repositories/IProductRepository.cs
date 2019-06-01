@@ -6,6 +6,8 @@ namespace Product.Repositories
     {
         List<Models.Product> Get(int page = 1, int pageSize = 10, string searchText = "");
 
+        List<Models.Product> Get(string desc, string model, string brand, int page = 1, int pageSize = 10);
+
         Models.Product Get(string id);
 
         void Create(Models.Product product);

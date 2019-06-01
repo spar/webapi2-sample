@@ -22,8 +22,14 @@ namespace Product.Api.Controllers
         // GET api/products
         [HttpGet]
         [ScopeAuthorize("read:products")]
-        public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10, string searchText = "")
+        [Route("api/products/{desc}/{model}/{brand}")]
+        [Route("api/products/{searchText}")]
+        [Route("api/products")]
+        public PaginatedResult<List<Models.Product>> Get(int page = 1, int pageSize = 10, string desc = "", string model = "", string brand = "", string searchText = "")
         {
+            if (!string.IsNullOrEmpty(desc) && !string.IsNullOrEmpty(model) && !string.IsNullOrEmpty(brand))
+                return _productService.Get(desc, model, brand);
+
             return _productService.Get(page, pageSize, searchText);
         }
 

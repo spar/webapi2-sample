@@ -55,6 +55,20 @@ namespace Product.UnitTests
         }
 
         [Fact]
+        public void GetByDescModelBrandTest()
+        {
+            var repo = new ProductInMemoryRepository();
+            InitProducts(repo);
+            var products = repo.Get("Desc1", "Model1", "Brand1");
+            Assert.Single(products);
+            Assert.Equal("Model1", products[0].Model);
+
+            products = repo.Get("Desc5", "Model5", "Brand5");
+            Assert.Single(products);
+            Assert.Equal("Model5", products[0].Model);
+        }
+
+        [Fact]
         public void CreateTest()
         {
             var repo = new ProductInMemoryRepository();

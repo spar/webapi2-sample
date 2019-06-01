@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Product.Repositories
@@ -26,6 +27,15 @@ namespace Product.Repositories
                 .Where(p => p.Brand.ToLower().Contains(searchText)
                             || p.Description.ToLower().Contains(searchText)
                             || p.Model.ToLower().Contains(searchText))
+                .Skip(page - 1 * pageSize).Take(pageSize).ToList();
+        }
+
+        public List<Models.Product> Get(string desc, string model, string brand, int page = 1, int pageSize = 10)
+        {
+            return _products
+                .Where(p => string.Equals(p.Brand, brand, StringComparison.CurrentCultureIgnoreCase)
+                            && string.Equals(p.Description, desc, StringComparison.CurrentCultureIgnoreCase)
+                            && string.Equals(p.Model, model, StringComparison.CurrentCultureIgnoreCase))
                 .Skip(page - 1 * pageSize).Take(pageSize).ToList();
         }
 

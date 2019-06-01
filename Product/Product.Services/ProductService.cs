@@ -25,6 +25,17 @@ namespace Product.Services
             };
         }
 
+        public PaginatedResult<List<Models.Product>> Get(string desc, string model, string brand, int page = 1, int pageSize = 10)
+        {
+            return new PaginatedResult<List<Models.Product>>
+            {
+                CurrentPage = page,
+                PageSize = pageSize,
+                Data = _productRepository.Get(desc, model, brand, page, pageSize),
+                Success = true
+            };
+        }
+
         public Models.Product Get(string id)
         {
             return _productRepository.Get(id);
