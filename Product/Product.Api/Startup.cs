@@ -7,6 +7,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Jwt;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using Product.Api.Swagger;
 using Product.Repositories;
 using Product.Services;
 using Swashbuckle.Application;
@@ -51,6 +52,9 @@ namespace Product.Api
                 {
                     c.SingleApiVersion("v1", "Product.Api");
                     c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\bin\Product.Api.XML");
+
+                    if (bool.Parse(ConfigurationManager.AppSettings["AuthenticationEnabled"]))
+                        c.OperationFilter<SwaggerAuthenticationFilter>();
                 })
                 .EnableSwaggerUi();
             app.UseWebApi(config);
