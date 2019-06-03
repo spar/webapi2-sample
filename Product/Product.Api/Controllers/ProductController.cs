@@ -19,7 +19,16 @@ namespace Product.Api.Controllers
             _productService = productService;
         }
 
-        // GET api/products
+        /// <summary>
+        /// Get Products
+        /// </summary>
+        /// <param name="page">current page</param>
+        /// <param name="pageSize">page size</param>
+        /// <param name="desc">Description of the product</param>
+        /// <param name="model">Model of the product</param>
+        /// <param name="brand">Brand of the product</param>
+        /// <param name="searchText">Search query</param>
+        /// <returns>Lis to products</returns>
         [HttpGet]
         [ScopeAuthorize("read:products")]
         [Route("api/products/{desc}/{model}/{brand}")]
@@ -33,7 +42,11 @@ namespace Product.Api.Controllers
             return _productService.Get(page, pageSize, searchText);
         }
 
-        // GET api/products/id1
+        /// <summary>
+        /// Get product by id
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>Product entity</returns>
         [HttpGet]
         [ScopeAuthorize("read:products")]
         public Models.Product Get(string id)
@@ -41,7 +54,11 @@ namespace Product.Api.Controllers
             return _productService.Get(id);
         }
 
-        // POST api/products
+        /// <summary>
+        /// Create Product
+        /// </summary>
+        /// <param name="product">Product entity in json format</param>
+        /// <returns>created product</returns>
         [HttpPost]
         [ScopeAuthorize("create:products")]
         public Result<Models.Product> Post([FromBody]Models.Product product)
@@ -49,7 +66,12 @@ namespace Product.Api.Controllers
             return _productService.Create(product);
         }
 
-        // PUT api/products/id1
+        /// <summary>
+        /// Update Product
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <param name="product">Product entity in json format</param>
+        /// <returns>updated product</returns>
         [HttpPut]
         [ScopeAuthorize("update:products")]
         public Result<Models.Product> Put(string id, [FromBody]Models.Product product)
@@ -58,7 +80,11 @@ namespace Product.Api.Controllers
             return _productService.Update(product);
         }
 
-        // DELETE api/products/id1
+        /// <summary>
+        /// Delete Product
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns></returns>
         [HttpDelete]
         [ScopeAuthorize("delete:products")]
         public Result<Models.Product> Delete(string id)

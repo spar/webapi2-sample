@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Reflection;
 using System.Web.Http;
 using Auth0.Owin;
@@ -14,6 +15,7 @@ using Newtonsoft.Json.Serialization;
 using Owin;
 using Product.Repositories;
 using Product.Services;
+using Swashbuckle.Application;
 
 namespace Product.Api
 {
@@ -46,6 +48,12 @@ namespace Product.Api
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
             app.UseAutofacMiddleware(container);
+            config.EnableSwagger(c =>
+                {
+                    c.SingleApiVersion("v1", "Product.Api");
+                    c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\bin\Product.Api.XML");
+                })
+                .EnableSwaggerUi();
             app.UseWebApi(config);
         }
 
