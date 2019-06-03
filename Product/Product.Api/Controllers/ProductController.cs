@@ -1,8 +1,8 @@
-﻿using Product.Models;
+﻿using Product.Api.Attributes;
+using Product.Models;
 using Product.Services;
 using System.Collections.Generic;
 using System.Web.Http;
-using Product.Api.Attributes;
 
 namespace Product.Api.Controllers
 {

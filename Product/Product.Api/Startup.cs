@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
-using System.Web.Http;
-using Auth0.Owin;
+﻿using Auth0.Owin;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Microsoft.IdentityModel.Tokens;
@@ -16,6 +10,11 @@ using Owin;
 using Product.Repositories;
 using Product.Services;
 using Swashbuckle.Application;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Reflection;
+using System.Web.Http;
 
 namespace Product.Api
 {

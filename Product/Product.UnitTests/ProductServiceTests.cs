@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Moq;
+﻿using Moq;
 using Product.Repositories;
 using Product.Services;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Product.UnitTests

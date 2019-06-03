@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Product.Models;
+﻿using Product.Models;
 using Product.Repositories;
+using System;
+using System.Collections.Generic;
 
 namespace Product.Services
 {

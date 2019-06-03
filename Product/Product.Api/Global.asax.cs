@@ -1,10 +1,10 @@
-﻿using System.Reflection;
-using System.Web.Http;
-using System.Web.Mvc;
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.WebApi;
 using Product.Repositories;
 using Product.Services;
+using System.Reflection;
+using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Product.Api
 {
