@@ -23,11 +23,8 @@ Another option was to use Aps.net Identity but it requires a SQL server which we
 
 Note: Please ask me if you need Auth0 tenant information for testing locally with authentication and authorizaration. Otherwise you can test with a live version.
 
-# Live Version
-* API: https://productwebapi.azurewebsites.net/api/products 
-* UI: https://productui.azurewebsites.net
-
-Once you press login in UI , it will take you to Auth0 hosted login page, once successfully logged in, you will be redirect back to UI.
+# Documentation
+Api exposes swagger UI where all the endpoints are listed with their parameters and return types.
 
 # User Interface
 UI is a vanilla SPA without any JavaScript framework. Bootstrap is used for responsive design. 
@@ -36,3 +33,10 @@ Currently, only querying exisiting products is supported. If the search box is e
 
 # Api
 There are four scopes- read:products, create:products, update:products, delete:products defined for authorization. These scopes are defined as permissions in Auth0 and assigned to two roles: Admin and Product Editor. These two roles are assigned to users. When a user logs in, based on their role, relevant scopes are added to access token.
+
+# Live Version
+* API: https://productwebapi.azurewebsites.net/api/products 
+* UI: https://productui.azurewebsites.net
+* Swagger Doc: https://productwebapi.azurewebsites.net/swagger/ui/index
+
+Once you press login in UI , it will take you to Auth0 hosted login page, once successfully logged in, you will be redirect back to UI.
